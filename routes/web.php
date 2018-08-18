@@ -12,9 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $posts = App\Post::all();
+    return view('home', compact('posts'));
 });
-Route::get('post/{name}', 'PostController@showPost');
+
+Route::get('post/{slug}', function($slug){
+	$post = App\Post::where('slug', '=', $slug)->firstOrFail();
+	return view('post', compact('post'));
+});
+
 Route::get('user/{name?}', function($name = null)
 {
     return $name;
@@ -25,6 +31,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'backend'], function () {
     Voyager::routes();
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

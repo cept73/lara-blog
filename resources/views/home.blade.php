@@ -1,24 +1,42 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+   <title>{{ config('app.name', 'Laravel') }}</title>
+@include('shared.header')
+</head>
+<body>
+@include('shared.navtop')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ __('title') }}</div>
+   <div class="container">
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+   	<!-- Jumbo -->
+   	<div class="row row-offcanvas row-offcanvas-right">
+   		<div class="col-xs-12 col-sm-12">
+   			<p class="pull-xs-right hidden-sm-up">
+   				<button type="button" class="btn btn-primary btn-sm" data-toggle="offcanvas">Toggle nav</button>
+   			</p>
+   			<div class="jumbotron">
+   				<h1>Hello, world!</h1>
+   				<p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
+   			</div>
+   		</div>
+   	</div>
 
-		{{ __('success') }}
+   	<!-- Posts -->
+   	<div class="row">
+@foreach($posts as $post)
+   		<div class="col-xs-6 col-lg-4 list-posts">
+   			<a href="/post/{{ $post->slug }}">
+   				<img src="{{ Voyager::image( $post->image ) }}" style="width:100%">
+   				<h2>{{ $post->title }}</h2>
+   				<!--<p>{{ $post->excerpt }}</p>-->
+   			</a>
+   		</div><!--/span-->
+@endforeach
+		<div class="clear"></div>
+		@include('shared.footer')
+   	</div><!--/row-->
 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+@include('shared.scripts')
+</body>
+</html>
