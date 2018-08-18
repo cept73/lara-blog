@@ -10,10 +10,12 @@
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>-->
 @if (Route::has('login')) 
-@if (!Auth::check())
+@if (Auth::check())
+          <li class="nav-item"><a class="nav-link" href="{{ url('/logout') }}">Logout</a></li>
+@else
           <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">Login</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ url('/register') }}">Register</a></li>
-@endif 
+@endif
 @endif
         </ul>
 

@@ -34,7 +34,7 @@
    		</div><!--/span-->
 @endforeach
 		<div class="clear"></div>
-		@include('shared.footer')
+@include('shared.footer')
    	</div><!--/row-->
 
 @include('shared.scripts')

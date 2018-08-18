@@ -21,6 +21,16 @@ Route::get('post/{slug}', function($slug){
 	return view('post', compact('post'));
 });
 
+Route::get('logout', function()
+{
+    Auth::logout();
+    return redirect('/');
+});
+Route::get('home', function()
+{
+    return redirect('/');
+});
+
 Route::get('user/{name?}', function($name = null)
 {
     return $name;
@@ -28,13 +38,8 @@ Route::get('user/{name?}', function($name = null)
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'backend'], function () {
     Voyager::routes();
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

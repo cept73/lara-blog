@@ -10,8 +10,8 @@
 ## Admin panel
 
 /admin
-email: admin@admin.com
-password: password
+email: admin@lara
+password: demo
 
 ## About Laravel
 
