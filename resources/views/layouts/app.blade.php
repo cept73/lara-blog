@@ -46,16 +46,16 @@
     </nav><!-- /.navbar -->
 
 
-   <div class="container">
+    <div class="container">
 
-	@yield('content')
+    @yield('content')
 
-	<!-- Copyright -->
-	<footer>
-		<p>&copy; 2018 Cept</p>
-	</footer>
+    <!-- Copyright -->
+    <footer>
+        <p>&copy; 2018 Cept</p>
+    </footer>
 
-   </div>
+    </div>
 
 
     <!--[if lt IE 9]>
