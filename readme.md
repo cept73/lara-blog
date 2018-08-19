@@ -9,7 +9,7 @@
 
 ## Admin panel
 
-/admin
+/backend
 email: admin@lara
 password: demo
 
