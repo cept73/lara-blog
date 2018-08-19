@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post as Posts;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -14,7 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Posts::all();
+        //$posts = Posts::all();
+        $posts = Post::all();
         return view('home', compact('posts'));
     }
 
@@ -25,7 +26,7 @@ class PostController extends Controller
      */
     public function showPost($slug)
     {
-        $post = Posts::where('slug', '=', $slug)->firstOrFail();
+        $post = Post::where('slug', '=', $slug)->firstOrFail();
         return view('post', compact('post'));
     }
 }
