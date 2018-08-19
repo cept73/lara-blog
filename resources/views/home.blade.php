@@ -15,10 +15,10 @@
    	</div>
 
    	<!-- Posts -->
-   	<div class="row">
+   	<div class="row" id="posts_list">
 
 @foreach($posts as $post)
-   		<div class="col-xs-6 col-lg-4" id="posts_list">
+   		<div class="col-xs-6 col-lg-4">
    			<a href="/post/{{ $post->slug }}">
    				<img src="{{ Voyager::image( $post->image ) }}" style="width:100%">
    				<h2>{{ $post->title }}</h2>
