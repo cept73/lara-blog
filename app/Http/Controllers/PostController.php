@@ -8,24 +8,24 @@ use App\Post as Posts;
 class PostController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Show main page.
      *
-     * @return void
+     * @return \Illuminate\Http\Response
      */
-    public function __construct()
+    public function index()
     {
-        //$this->middleware('auth');
+        $posts = Posts::all();
+        return view('home', compact('posts'));
     }
 
     /**
-     * Show the application dashboard.
+     * Show one post.
      *
      * @return \Illuminate\Http\Response
      */
     public function showPost($slug)
     {
-	$post = Posts::where('slug', '=', $slug)->firstOrFail();
-	return view('post', compact('post'));
-        return view('posts');
+    	$post = Posts::where('slug', '=', $slug)->firstOrFail();
+    	return view('post', compact('post'));
     }
 }
