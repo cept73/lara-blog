@@ -1,21 +1,17 @@
-<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-   <title>{{ config('app.name', 'Laravel') }} | {{ $post->title }}</title>
-@include('shared.header')
-</head>
-<body>
-@include('shared.navtop')
+@extends('layouts/app')
 
+@section('title')
+	{{ $post->title }}
+@endsection
 
-<div class="container">
+@section('content')
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 
 			<!-- Хлебные крошки -->
 			<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="#">Посты</a></li>
+				<li class="breadcrumb-item"><a href="/">Посты</a></li>
 				<li class="breadcrumb-item active" aria-current="page">Последние</li>
 			</ol>
 			</nav>
@@ -27,9 +23,4 @@
 
 		</div>
 	</div>
-@include('shared.footer')
-</div>
-
-
-</body>
-</html>
+@endsection

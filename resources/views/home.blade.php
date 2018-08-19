@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-   <title>{{ config('app.name', 'Laravel') }}</title>
-@include('shared.header')
-</head>
-<body>
-@include('shared.navtop')
+@extends('layouts/app')
 
-   <div class="container">
-
+@section('content')
    	<!-- Jumbo -->
    	<div class="row row-offcanvas row-offcanvas-right">
    		<div class="col-xs-12 col-sm-12">
@@ -24,8 +16,9 @@
 
    	<!-- Posts -->
    	<div class="row">
+
 @foreach($posts as $post)
-   		<div class="col-xs-6 col-lg-4 list-posts">
+   		<div class="col-xs-6 col-lg-4" id="posts_list">
    			<a href="/post/{{ $post->slug }}">
    				<img src="{{ Voyager::image( $post->image ) }}" style="width:100%">
    				<h2>{{ $post->title }}</h2>
@@ -33,10 +26,8 @@
    			</a>
    		</div><!--/span-->
 @endforeach
-		<div class="clear"></div>
-@include('shared.footer')
-   	</div><!--/row-->
 
-@include('shared.scripts')
-</body>
-</html>
+		<div class="clear"></div>
+	</div><!--/row-->
+
+@endsection
