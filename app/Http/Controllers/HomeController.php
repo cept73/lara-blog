@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post as Posts;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -13,16 +15,27 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+	// Auth required
+        //$this->middleware('auth');
     }
 
     /**
-     * Show the application dashboard.
+     * Show the list of posts.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('home');
+	$posts = Posts::all();
+
+	return view('home', compact('posts'));
     }
+
+    public function logout()
+    {
+	Auth::logout();
+
+	return redirect('/');
+    }
+
 }

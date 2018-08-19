@@ -11,34 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    $posts = App\Post::all();
-    return view('home', compact('posts'));
-});
-
-Route::get('post/{slug}', function($slug){
-	$post = App\Post::where('slug', '=', $slug)->firstOrFail();
-	return view('post', compact('post'));
-});
-
-Route::get('logout', function()
-{
-    Auth::logout();
-    return redirect('/');
-});
-Route::get('home', function()
-{
-    return redirect('/');
-});
-
-Route::get('user/{name?}', function($name = null)
-{
-    return $name;
-});
+Route::get('/', 'HomeController@index');
+Route::get('post/{slug}', 'PostController@showPost');
+Route::get('logout', 'HomeController@logout');
 
 Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'backend'], function () {
     Voyager::routes();
